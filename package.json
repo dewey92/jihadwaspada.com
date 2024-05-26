@@ -1,0 +1,30 @@
+{
+  "name": "jihadwaspada-com",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro check && astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/check": "^0.7.0",
+    "@astrojs/mdx": "^3.0.0",
+    "@astrojs/rss": "^4.0.6",
+    "@astrojs/sitemap": "^3.1.4",
+    "@expressive-code/plugin-line-numbers": "^0.35.3",
+    "astro": "^4.8.6",
+    "astro-embed": "^0.7.2",
+    "astro-expressive-code": "^0.35.3",
+    "sass": "^1.77.2",
+    "typescript": "^5.4.5"
+  },
+  "devDependencies": {
+    "@expressive-code/plugin-collapsible-sections": "^0.35.3",
+    "@iconify/utils": "^2.1.10",
+    "@shikijs/transformers": "^1.6.0",
+    "@shikijs/twoslash": "^1.6.0"
+  }
+}

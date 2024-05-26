@@ -1,0 +1,42 @@
+$blue: #03a9f4;
+$blue-light: #e5f6fd;
+$blue-dark: #014361;
+$blue-text: #007dd1;
+
+$orange: #ff9800;
+$orange-light: #fff4e5;
+$orange-dark: #663c00;
+
+$green: #4caf50;
+$green-light: #edf7ed;
+$green-dark: #1e4620;
+
+$yellow: #fef5e7;
+
+$tablet: 768px;
+$laptop: 1024px;
+$desktop: 1200px;
+
+@mixin from($device) {
+  @media screen and (min-width: $device) {
+    @content;
+  }
+}
+
+@mixin until($device) {
+  @media screen and (max-width: ($device - 1px)) {
+    @content;
+  }
+}
+
+@mixin mobile {
+  @include until($tablet) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @include from($tablet) {
+    @content;
+  }
+}

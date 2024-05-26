@@ -1,0 +1,272 @@
+---
+import { Image } from 'astro:assets';
+import type { CollectionEntry } from 'astro:content';
+import BaseHead from '@components/BaseHead.astro';
+import Header from '@components/Header.astro';
+import Footer from '@components/Footer.astro';
+import FormattedDate from '@components/FormattedDate.astro';
+
+type Props = CollectionEntry<'blog'>['data'];
+
+const { title, description, pubDate, updatedDate, image, caption } = Astro.props;
+---
+
+<html lang="en">
+	<head>
+		<BaseHead title={title} description={description} />
+	</head>
+
+	<body>
+		<Header />
+		<main>
+			<article>
+				<div class="title">
+					<h1>{title}</h1>
+					<div class="date">
+						<FormattedDate date={pubDate} />
+						{
+							updatedDate && (
+								<div class="last-updated-on">
+									Last updated on <FormattedDate date={updatedDate} />
+								</div>
+							)
+						}
+					</div>
+				</div>
+
+				<div class="hero-image">
+					<figure>
+						{image && <Image src={image} alt={caption ?? ''} />}
+						{caption && <figcaption set:html={caption} />}
+					</figure>
+				</div>
+
+				<div class="post__content">
+					<slot />
+				</div>
+			</article>
+		</main>
+		<Footer />
+	</body>
+</html>
+
+<style lang="scss">
+@import '@styles/vars.scss';
+
+article {
+	max-width: 720px;
+	margin: auto;
+	color: rgb(var(--gray-dark));
+}
+.title {
+	margin-bottom: 1em;
+	padding: 1em 0;
+	text-align: center;
+	line-height: 1;
+}
+.title h1 {
+	font-size: 34px;
+	margin-bottom: 10px;
+
+	@include tablet {
+		font-size: 50px;
+	}
+}
+.date {
+	font-size: 16px;
+	color: rgb(var(--gray));
+}
+.last-updated-on {
+	font-style: italic;
+}
+.hero-image {
+	position: relative;
+	left: 50%;
+	width: 100vw;
+	margin-bottom: 30px;
+
+	figure {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+
+		position: relative;
+		left: -50%;
+		margin: 0 auto;
+		max-width: calc(100vw - 20px);
+
+		@include tablet {
+			max-width: min(100vw, calc($tablet + 50px));
+		}
+	}
+
+	img {
+		display: block;
+		border-radius: 12px;
+		// box-shadow: var(--box-shadow);
+	}
+
+	figcaption {
+		margin-top: 10px;
+		font-size: 80%;
+		color: #5a5a5a;
+		text-align: center;
+	}
+}
+</style>
+
+<style lang="scss" is:global>
+@import '@styles/vars.scss';
+
+.post__content {
+	color: #333;
+	font-size: 16px;
+	line-height: 2;
+
+	@include tablet {
+		font-size: 19px;
+		line-height: 1.8;
+	}
+
+	h2, h3, h4 {
+		font-family: var(--font-2);
+		color: #222;
+		margin-bottom: 20px;
+	}
+
+	h2 {
+		margin-top: 40px;
+		font-weight: 500;
+		font-size: 28px;
+
+		@include tablet {
+			font-size: 32px;
+		}
+	}
+	h3 {
+		font-weight: 400;
+		font-size: 26px;
+	}
+
+	p, .expressive-code {
+		margin-block: 30px;
+	}
+
+	p + ul, p + ol {
+		margin-top: -20px;
+	}
+
+	ul, ol {
+		padding-left: 30px;
+	}
+	ul > li::marker {
+		content: '\f061\0020\0020';
+		font-family: var(--font-awesome);
+		color: $blue-text;
+	}
+	ol > li::marker {
+		color: $blue-text;
+	}
+
+	mark {
+		background-color: #bbffc7;
+	}
+
+	blockquote {
+		all: unset;
+		display: block;
+		padding: 15px;
+		font-style: italic;
+		margin-bottom: 30px;
+
+		@include tablet {
+			padding: 25px;
+		}
+
+		> p {
+			font-size: 16px;
+			margin-bottom: 0;
+
+			@include tablet {
+				font-size: 18px;
+			}
+		}
+
+		&:before {
+			content: '\f10d';
+			display: block;
+			margin-bottom: 20px;
+			font-family: var(--font-awesome);
+			font-size: 30px;
+			color: $blue-text;
+			line-height: 1;
+		}
+
+		&:after {
+			content: '\f10e';
+			display: block;
+			margin-top: 10px;
+			font-family: var(--font-awesome);
+			font-size: 30px;
+			color: $blue-text;
+			text-align: right;
+			line-height: 1;
+		}
+	}
+
+	table, th, td {
+		border: 1px solid #bbb;
+		border-collapse: collapse;
+	}
+
+	th, td {
+		font-size: 16px;
+		padding: 5px;
+	}
+
+	pre {
+		--ec-codeFontSize: 12px;
+
+		@include tablet {
+			--ec-codeFontSize: 14px;
+		}
+	}
+
+	details {
+		margin-bottom: var(--details-spacing);
+		background: $yellow;
+		font-size: 90%;
+		border-radius: 8px;
+
+		p, .expressive-code {
+			margin-block: 15px;
+		}
+
+		summary {
+			font-weight: bold;
+			padding: var(--details-spacing);
+			cursor: pointer;
+		}
+
+		&[open] {
+			padding: var(--details-spacing);
+		}
+
+		&[open] summary {
+			border-bottom: 1px solid lighten($orange, 40%);
+			margin: calc(var(--details-spacing) * -1);
+			margin-bottom: var(--details-spacing);
+		}
+	}
+
+	[data-footnotes] {
+		font-size: 90%;
+		padding-top: 20px;
+		border-top: 2px solid #eee;
+
+		p {
+			margin: 0;
+		}
+	}
+}
+</style>

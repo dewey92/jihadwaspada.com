@@ -1,0 +1,43 @@
+---
+import { getCollection } from 'astro:content';
+import BaseHead from '@components/BaseHead.astro';
+import Header from '@components/Header.astro';
+import Footer from '@components/Footer.astro';
+import CategoryPreview from '@components/CategoryPreview.astro';
+import { filterPostsByCategory } from '@utils/posts';
+import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
+
+const posts = await getCollection('blog')
+posts.sort(
+	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+)
+
+const programmingPosts = filterPostsByCategory('programming', posts)
+const islamicPosts = filterPostsByCategory('islam', posts)
+const otherPosts = filterPostsByCategory('other', posts)
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+	</head>
+	<body style="--container-width: 1200px">
+		<Header />
+		<main>
+			<CategoryPreview category="latest" posts={posts} />
+			<CategoryPreview category="programming" posts={programmingPosts} />
+			<CategoryPreview category="islam" posts={islamicPosts} />
+			<CategoryPreview category="other" posts={otherPosts} />
+		</main>
+		<Footer />
+	</body>
+</html>
+
+<style lang="scss">
+main {
+	max-width: 1200px;
+	width: 100%;
+	padding-inline: 20px;
+}
+</style>

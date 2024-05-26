@@ -1,0 +1,8 @@
+---
+import { getCollection } from 'astro:content'
+import PostsByCategory from '@layouts/PostsByCategory.astro'
+
+let posts = await getCollection('blog')
+---
+
+<PostsByCategory heading="Latest" posts={posts} />

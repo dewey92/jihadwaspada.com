@@ -1,0 +1,40 @@
+<style lang="scss" is:global>
+.hero-image img {
+	width: 50% !important;
+}
+
+#shiny {
+	background:
+		linear-gradient(90deg, #0000 33%, rgba(255,255,255,0.3) 50%, #0000 66%) #16d5cc;
+	background-size: 300% 100%;
+	animation: shine 2s infinite;
+	color: white;
+	font-weight: bold;
+}
+@keyframes shine {
+	0% {
+		background-position: right;
+	}
+}
+
+#high-lev-table {
+	li::marker {
+		all: unset;
+	}
+
+	th {
+		font-size: 16px;
+	}
+	th, td {
+		border: 1px solid #dadadc;
+		vertical-align: top;
+	}
+	h4 {
+		margin-bottom: 10px;
+		font-weight: bold;
+		font-size: 18px;
+		color: #007dd1;
+	}
+}
+
+</style>

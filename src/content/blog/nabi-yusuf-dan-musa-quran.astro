@@ -1,0 +1,100 @@
+<style lang="scss" is:global>
+@import '@styles/vars.scss';
+
+em {
+	color: #ff9800;
+}
+
+.as {
+	display: inline-block;
+	background: url(/images/alaihissalam.png);
+	background-size: cover;
+	width: 30px;
+	height: 17px;
+}
+
+table#comparison {
+	table-layout: fixed;
+	border: none;
+
+	thead th {
+		border: none;
+		border-bottom: 2px solid $blue-text;
+		font-size: 18px;
+		text-align: center;
+	}
+
+	tbody tr:last-child {
+		border-bottom: 2px solid $blue-text;
+	}
+
+	tbody td {
+		padding-top: 15px;
+		padding-bottom: 15px;
+		vertical-align: middle;
+		position: relative;
+		font-size: 90%;
+		border: none;
+
+		@include mobile {
+			line-height: 1.7;
+		}
+	}
+
+	td.category {
+		text-align: center;
+		font-weight: bold;
+	}
+
+	tbody td:first-child {
+		padding-left: 0;
+	}
+
+	tbody td:nth-child(2) {
+		--timeline: $blue;
+		border-left: 2px solid $blue-text;
+		position: relative;
+		padding-left: 22px;
+		padding-right: 0;
+	}
+	tbody td:nth-child(2)::before {
+		display: block;
+		content: '';
+		position: absolute;
+		top: 50%;
+		transform: translateY(-50%);
+		left: -10px;
+		width: 14px;
+		height: 14px;
+		background: white;
+		border: 2px solid $blue-text;
+		border-radius: 99em;
+		box-shadow: 3px 3px 4px -2px #555555aa;
+	}
+}
+
+
+table details {
+	--details-spacing: 15px;
+	margin-top: 10px;
+}
+@include mobile {
+	table details {
+		--details-spacing: 6px;
+	}
+}
+span.expand {
+	text-decoration: underline dashed;
+	text-underline-offset: 2px;
+	font-style: italic;
+	cursor: help;
+}
+.similarity {
+	background: #edf7ed;
+}
+.similarity td {
+	border-radius: 8px;
+	margin: 8px 0;
+	padding: 8px 16px !important;
+}
+</style>

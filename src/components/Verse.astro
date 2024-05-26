@@ -1,0 +1,49 @@
+<div class="verse">
+	<div class="verse__arabic">
+		<slot name="arabic" />
+	</div>
+	<div class="verse__translation">
+		<slot name="translation" />
+	</div>
+</div>
+
+<style lang="scss" is:global>
+@import '@styles/vars.scss';
+.verse {
+	background: #f9f9f9;
+	border-radius: 8px;
+	margin-bottom: 30px;
+	padding: 15px;
+
+	@include tablet {
+		padding: 30px;
+	}
+}
+
+.verse__arabic {
+	font-family: var(--font-arabic);
+	text-align: right;
+
+	p {
+		font-size: 18px;
+		margin-block-start: 0;
+
+		@include tablet {
+			font-size: 22px;
+		}
+	}
+}
+
+.verse__translation > p {
+	font-size: 15px;
+	margin-top: 0;
+
+	@include tablet {
+		font-size: 16px;
+	}
+
+	&:last-of-type {
+		margin-bottom: 0;
+	}
+}
+</style>

@@ -1,0 +1,57 @@
+---
+import '@styles/post-card.scss';
+
+import { Image } from 'astro:assets'
+import type { CollectionEntry } from 'astro:content'
+import imgPlaceholder from '@assets/images/blog-placeholder-1.jpg'
+import FormattedDate from './FormattedDate.astro'
+
+interface Props {
+	posts: Array<CollectionEntry<'blog'>>
+}
+const { posts } = Astro.props
+---
+<ul>
+	{posts.map((post) => {
+		return (
+			<li>
+				<a class="post-card" href={`/blog/${post.slug}`}>
+					<div>
+						<Image
+							src={post.data.image ?? imgPlaceholder}
+							alt={post.data.caption ?? ''}
+							class="post-card__image"
+						/>
+					</div>
+					<div>
+						<h2 class="post-card__title">{post.data.title}</h2>
+						<aside class="post-card__meta">
+							<FormattedDate date={post.data.pubDate} />
+						</aside>
+						<p class="post-card__summary">{post.data.description}</p>
+					</div>
+				</a>
+			</li>
+		)
+	})}
+</ul>
+
+<style lang="scss">
+ul {
+	margin-top: 0;
+	padding-left: 0;
+
+	li {
+		list-style-type: none;
+		margin-left: 0;
+
+		&:last-child {
+			margin-bottom: 0;
+		}
+
+		+ li {
+			padding-top: 20px;
+		}
+	}
+}
+</style>

@@ -1,0 +1,47 @@
+---
+import { type CollectionEntry } from 'astro:content'
+import BaseHead from '@components/BaseHead.astro'
+import Header from '@components/Header.astro'
+import Footer from '@components/Footer.astro'
+import PostList from '@components/PostList.astro'
+import { SITE_TITLE, SITE_DESCRIPTION } from '../consts'
+
+interface Props {
+	heading: string
+	posts: Array<CollectionEntry<'blog'>>
+}
+
+const { heading, posts } = Astro.props
+posts.sort(
+	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+)
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+	</head>
+	<body>
+		<Header />
+		<main>
+			<h1>{heading}</h1>
+			<section>
+				<PostList posts={posts} />
+			</section>
+		</main>
+		<Footer />
+	</body>
+</html>
+
+<style lang="scss">
+@import '@styles/vars.scss';
+
+h1 {
+	font-size: 18px;
+	text-transform: uppercase;
+	letter-spacing: 2px;
+	color: #777;
+	margin-block: 20px 40px;
+}
+</style>

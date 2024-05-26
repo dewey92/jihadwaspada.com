@@ -1,0 +1,29 @@
+---
+import { type CollectionEntry, getCollection } from 'astro:content'
+import PostsByCategory from '@layouts/PostsByCategory.astro'
+import { filterPostsByCategory } from '@utils/posts'
+
+export async function getStaticPaths() {
+	const posts = await getCollection('blog')
+	const categories = posts.reduce((categoriesSet, post) => {
+		post.data.categories.forEach((cat) => categoriesSet.add(cat))
+		return categoriesSet
+	}, new Set<string>())
+
+	return [...categories].map((category) => ({
+		params: { category },
+		props: {
+			posts: filterPostsByCategory(category, posts),
+		},
+	}))
+}
+
+interface Props {
+	posts: Array<CollectionEntry<'blog'>>
+}
+
+const { category } = Astro.params
+const { posts } = Astro.props
+---
+
+<PostsByCategory heading={category} posts={posts} />
