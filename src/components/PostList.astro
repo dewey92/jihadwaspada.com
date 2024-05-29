@@ -5,11 +5,13 @@ import { Image } from 'astro:assets'
 import type { CollectionEntry } from 'astro:content'
 import imgPlaceholder from '@assets/images/blog-placeholder-1.jpg'
 import FormattedDate from './FormattedDate.astro'
+import { getMinutesRead } from '@utils/posts';
 
 interface Props {
 	posts: Array<CollectionEntry<'blog'>>
 }
-const { posts } = Astro.props
+const { posts: ps } = Astro.props
+const posts = await getMinutesRead(ps)
 ---
 <ul>
 	{posts.map((post) => {
@@ -26,7 +28,7 @@ const { posts } = Astro.props
 					<div>
 						<h2 class="post-card__title">{post.data.title}</h2>
 						<aside class="post-card__meta">
-							<FormattedDate date={post.data.pubDate} />
+							<FormattedDate date={post.data.pubDate} />&nbsp;&nbsp;•&nbsp;&nbsp;{post.data.minutesRead}
 						</aside>
 						<p class="post-card__summary">{post.data.description}</p>
 					</div>

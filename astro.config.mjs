@@ -2,8 +2,9 @@ import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
 import { pluginCollapsibleSections } from '@expressive-code/plugin-collapsible-sections';
 import { pluginLineNumbers } from '@expressive-code/plugin-line-numbers';
-import expressiveCode from "astro-expressive-code";
+import expressiveCode from 'astro-expressive-code';
 import { defineConfig } from 'astro/config';
+import { remarkReadingTime } from './remark-reading-time';
 
 // import { transformerTwoslash } from '@shikijs/twoslash'
 
@@ -31,9 +32,10 @@ export default defineConfig({
 		}),
 		mdx()
 	],
-	/* markdown: {
-		shikiConfig: {
+	markdown: {
+		remarkPlugins: [remarkReadingTime],
+		/* shikiConfig: {
 			transformers: [transformerTwoslash({ explicitTrigger: true })],
-		},
-	}, */
+		}, */
+	},
 });
