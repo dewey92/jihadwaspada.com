@@ -1,0 +1,76 @@
+---
+import { Image } from 'astro:assets'
+import avatar from '@assets/images/avatar.png'
+---
+
+<header>
+	<div>
+		<h1>Hi, I'm <dfn title="/dʒɪˈhɑːd/ (noun): An individual's striving for spiritual self-perfection">Jihad</dfn>.</h1>
+		<h2>A father, an ordinary software developer, and a muslim before all</h2>
+	</div>
+
+	<figure>
+		<Image src={avatar} alt="jihad-ganteng" />
+	</figure>
+</header>
+
+<style lang="scss">
+@import '@styles/vars.scss';
+
+header {
+	display: grid;
+	align-items: center;
+	margin-bottom: 30px;
+
+	@include tablet {
+		grid-template-columns: 1fr 1fr;
+		margin-bottom: 50px;
+	}
+}
+
+h1 {
+	font-size: 40px;
+	text-align: center;
+
+	@include tablet {
+		margin-inline: auto 0;
+		font-size: 72px;
+		text-align: left;
+	}
+}
+
+h2 {
+	font-size: 20px;
+	font-weight: normal;
+	color: #555;
+	text-align: center;
+
+	@include tablet {
+		font-size: 30px;
+		text-align: left;
+	}
+}
+
+dfn {
+	text-decoration: 3px wavy underline $blue-text;
+	text-underline-offset: 5px;
+
+	@include tablet {
+		text-decoration: 4px wavy underline $blue-text;
+		text-underline-offset: 10px;
+	}
+}
+
+img {
+	display: block;
+	border-radius: 100%;
+	margin: 20px auto 0;
+	width: 200px;
+	height: auto;
+
+	@include tablet {
+		margin: 0 0 0 auto;
+		width: auto;
+	}
+}
+</style>

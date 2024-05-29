@@ -18,7 +18,7 @@ const categoryLink = category === 'latest'
 	: `/category/${category}`
 ---
 <section>
-	<h2>{category}</h2>
+	<h2><a href={categoryLink}>{category}</a></h2>
 	<div class="posts">
 		{posts.map((post, i) => {
 			return (
@@ -60,6 +60,11 @@ h2 {
 	letter-spacing: 2px;
 	color: #777;
 	margin-block: 20px 40px;
+
+	a {
+		color: inherit;
+		text-decoration: none;
+	}
 }
 
 .posts {
