@@ -88,7 +88,7 @@ article {
 	line-height: 1;
 }
 .title h1 {
-	font-size: 34px;
+	font-size: 28px;
 	margin-bottom: 10px;
 
 	@include tablet {
@@ -96,8 +96,12 @@ article {
 	}
 }
 .date {
-	font-size: 16px;
+	font-size: 15px;
 	color: rgb(var(--gray));
+
+	@include tablet {
+		font-size: 16px;
+	}
 }
 .last-updated-on {
 	font-style: italic;
@@ -106,6 +110,9 @@ article {
 	position: relative;
 	margin-bottom: 30px;
 
+	@include mobile {
+		margin-inline: -18px;
+	}
 	@include tablet {
 		left: 50%;
 		width: 100vw;
@@ -117,7 +124,6 @@ article {
 		align-items: center;
 		position: relative;
 		margin: 0 auto;
-		max-width: calc(100vw - 20px);
 
 		@include tablet {
 			left: -50%;

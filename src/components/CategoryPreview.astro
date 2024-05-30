@@ -130,9 +130,13 @@ h2 {
 
 .post-card__summary {
 	display: block; // reset ellipsis
-	font-size: 18px;
+	font-size: 16px;
 	line-height: 1.6;
 	margin-bottom: 15px;
+
+	@include tablet {
+		font-size: 18px;
+	}
 }
 
 .post-card:first-child {
@@ -149,7 +153,11 @@ h2 {
 	}
 
 	.post-card__title {
-		font-size: 28px;
+		font-size: 24px;
+
+		@include tablet {
+			font-size: 28px;
+		}
 	}
 
 	.post-card__details {
