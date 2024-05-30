@@ -40,7 +40,6 @@ main {
   padding-block: 48px;
 
   @include mobile {
-    overflow-x: hidden;
     padding: 20px;
     width: 100%;
   }

@@ -1,15 +1,22 @@
 ---
-import { Image } from 'astro:assets';
-import type { CollectionEntry } from 'astro:content';
-import BaseHead from '@components/BaseHead.astro';
-import Header from '@components/Header.astro';
-import Footer from '@components/Footer.astro';
-import FormattedDate from '@components/FormattedDate.astro';
+import { Image } from 'astro:assets'
+import { getCollection, type CollectionEntry } from 'astro:content'
+import BaseHead from '@components/BaseHead.astro'
+import Header from '@components/Header.astro'
+import Footer from '@components/Footer.astro'
+import FormattedDate from '@components/FormattedDate.astro'
+import SeriesPosts from '@components/SeriesPosts'
 
-type Props = CollectionEntry<'blog'>['data'] & { minutesRead: string };
+type Props = CollectionEntry<'blog'>['data'] & { minutesRead: string }
 
-const { title, description, minutesRead, pubDate, updatedDate, image, caption } = Astro.props;
-console.log(minutesRead)
+const { title, description, minutesRead, pubDate, updatedDate, image, caption, series } = Astro.props
+
+async function getSeriesPosts () {
+	const posts = await getCollection('blog')
+	return posts.filter((post) => post.data.series === series)
+}
+
+const seriesPosts = series !== undefined ? await getSeriesPosts() : []
 ---
 
 <html lang="en">
@@ -53,6 +60,14 @@ console.log(minutesRead)
 					<slot />
 				</div>
 			</article>
+			{series !== undefined && (
+				<SeriesPosts
+					currentTitle={title}
+					series={series}
+					posts={seriesPosts}
+					client:idle
+				/>
+			)}
 		</main>
 		<Footer />
 	</body>
@@ -89,21 +104,23 @@ article {
 }
 .hero-image {
 	position: relative;
-	left: 50%;
-	width: 100vw;
 	margin-bottom: 30px;
+
+	@include tablet {
+		left: 50%;
+		width: 100vw;
+	}
 
 	figure {
 		display: flex;
 		flex-direction: column;
 		align-items: center;
-
 		position: relative;
-		left: -50%;
 		margin: 0 auto;
 		max-width: calc(100vw - 20px);
 
 		@include tablet {
+			left: -50%;
 			max-width: min(100vw, calc($tablet + 50px));
 		}
 	}

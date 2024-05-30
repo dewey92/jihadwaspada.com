@@ -12,12 +12,14 @@
   "dependencies": {
     "@astrojs/check": "^0.7.0",
     "@astrojs/mdx": "^3.0.0",
+    "@astrojs/preact": "^3.3.0",
     "@astrojs/rss": "^4.0.6",
     "@astrojs/sitemap": "^3.1.4",
     "@expressive-code/plugin-line-numbers": "^0.35.3",
     "astro": "^4.8.6",
     "astro-embed": "^0.7.2",
     "astro-expressive-code": "^0.35.3",
+    "preact": "^10.22.0",
     "sass": "^1.77.2",
     "typescript": "^5.4.5"
   },

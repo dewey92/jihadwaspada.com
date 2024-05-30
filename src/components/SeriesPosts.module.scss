@@ -1,0 +1,104 @@
+@import '@styles/vars.scss';
+
+.seriesPostsRoot {
+  position: sticky;
+  bottom: 20px;
+  margin: 30px auto 0;
+  background: #000000aa;
+  backdrop-filter: blur(100px) saturate(2);
+  box-shadow: 0 8px 10px -4px #22222288;
+  color: white;
+  border-radius: 20px;
+  overflow: hidden;
+  max-width: 400px;
+
+  header {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    background: #00000044;
+    padding: 20px;
+
+    h4 {
+      color: white;
+      margin: 0 auto 0 0;
+      font-size: 15px;
+
+      @include tablet {
+        font-size: 16px;
+      }
+
+      small {
+        color: #efefef;
+      }
+    }
+  }
+}
+
+
+.list {
+  counter-reset: index-number;
+  max-height: 310px;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-color: #333 #555;
+  transition: linear 150ms max-height;
+
+  &::-webkit-scrollbar {
+    width: 10px; // vertical scrollbar
+    height: 10px; // horizontal scrollbar
+  }
+  &::-webkit-scrollbar-thumb { // foreground
+    background: #333;
+  }
+  &::-webkit-scrollbar-track { // background
+    background: #555;
+  }
+
+  [aria-expanded="false"] ~ & {
+    max-height: 0;
+  }
+}
+
+.listItem {
+  display: grid;
+  grid-template-columns: 10px 100px 1fr;
+  align-items: center;
+  gap: 15px;
+  padding: 10px;
+  counter-increment: index-number;
+  color: inherit;
+  text-decoration: none;
+
+  &::before {
+    content: counter(index-number);
+    font-size: 14px;
+    margin-left: 5px;
+  }
+
+  &:hover {
+    background: #444444aa;
+  }
+
+  &.currentlyReading {
+    background: $blue-dark;
+    &::before {
+      content: '\f101';
+      font-family: var(--font-awesome);
+      font-weight: 900;
+      margin-left: 2px;
+    }
+  }
+}
+
+.articleImage {
+  aspect-ratio: 16/9;
+  object-fit: cover;
+}
+
+.articleTitle {
+  color: white;
+  font-size: 15px;
+  font-weight: normal;
+  margin: 0;
+}
