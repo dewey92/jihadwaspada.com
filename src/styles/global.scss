@@ -37,11 +37,11 @@ main {
   box-sizing: border-box;
   width: var(--container-width);
   margin: auto;
-  padding: 3em 1em;
+  padding-block: 48px;
 
   @include mobile {
     overflow-x: hidden;
-    padding: 1em;
+    padding: 20px;
     width: 100%;
   }
 }

@@ -21,6 +21,10 @@ const categoryLink = category === 'latest'
 	<h2><a href={categoryLink}>{category}</a></h2>
 	<div class="posts">
 		{posts.map((post, i) => {
+			const sizes = i === 0
+				? "(max-width: 420px) 420px, (max-width: 767px) 768px, 570px"
+				: "(max-wdith: 420px) 128px, (max-width: 767px) 200px, 128px"
+
 			return (
 				<a class="post-card" href={`/blog/${post.slug}`} style={`--cat-grid-area: pbc-${i + 1}`}>
 					<div>
@@ -28,6 +32,8 @@ const categoryLink = category === 'latest'
 							src={post.data.image ?? imgPlaceholder}
 							alt={post.data.caption ?? ''}
 							class="post-card__image"
+							widths={[128, 200, 420, 570, 768]}
+							sizes={sizes}
 						/>
 					</div>
 					<div class="post-card__details">

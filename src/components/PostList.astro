@@ -23,6 +23,8 @@ const posts = await getMinutesRead(ps)
 							src={post.data.image ?? imgPlaceholder}
 							alt={post.data.caption ?? ''}
 							class="post-card__image"
+							widths={[150, 420, 768]}
+							sizes="(max-width: 420px) 420px, (max-width: 767px) 768px, 150px"
 						/>
 					</div>
 					<div>

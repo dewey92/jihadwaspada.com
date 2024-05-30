@@ -37,7 +37,14 @@ console.log(minutesRead)
 
 				<div class="hero-image">
 					<figure>
-						{image && <Image src={image} alt={caption ?? ''} />}
+						{image && (
+							<Image
+								src={image}
+								alt={caption ?? ''}
+								loading="eager"
+								widths={[420, 768, 850]}
+							/>
+						)}
 						{caption && <figcaption set:html={caption} />}
 					</figure>
 				</div>
