@@ -40,3 +40,20 @@ $desktop: 1200px;
     @content;
   }
 }
+
+@mixin aspect-ratio($width, $height) {
+  aspect-ratio: $width #{'/'} $height;
+  // Fallback (current, using padding hack)
+  @supports not (aspect-ratio: $width #{'/'} $height) {
+    &::before {
+      float: left;
+      padding-top: calc(100% * #{$height} / #{$width});
+      content: "";
+    }
+    &::after {
+      display: block;
+      content: "";
+      clear: both;
+    }
+  }
+}

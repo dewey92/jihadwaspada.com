@@ -5,6 +5,7 @@
   bottom: 20px;
   margin: 30px auto 0;
   background: #000000aa;
+  -webkit-backdrop-filter: blur(100px) saturate(2);
   backdrop-filter: blur(100px) saturate(2);
   box-shadow: 0 8px 10px -4px #22222288;
   color: white;
@@ -92,7 +93,7 @@
 }
 
 .articleImage {
-  aspect-ratio: 16/9;
+  @include aspect-ratio(16, 9);
   object-fit: cover;
 }
 
