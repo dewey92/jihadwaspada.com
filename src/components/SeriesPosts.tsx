@@ -1,5 +1,5 @@
 import type { CollectionEntry } from 'astro:content'
-import { useEffect, useReducer } from 'preact/hooks'
+import { useMemo, useEffect, useReducer } from 'preact/hooks'
 
 import style from './SeriesPosts.module.scss'
 
@@ -9,8 +9,10 @@ interface Props {
 	posts: CollectionEntry<'blog'>[]
 }
 
-export default function SeriesPosts ({ currentTitle, series, posts }: Props) {
+export default function SeriesPosts ({ currentTitle, series, posts: ps }: Props) {
 	const [open, handleToggle] = useReducer<boolean, void>((s) => !s, false)
+
+	const posts = useMemo(() => ps.sort((a, b) => a.data.pubDate.valueOf() - b.data.pubDate.valueOf()), [])
 	const currentIndex = posts.findIndex((p) => p.data.title === currentTitle)
 	const total = posts.length
 
