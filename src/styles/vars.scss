@@ -44,16 +44,9 @@ $desktop: 1200px;
 @mixin aspect-ratio($width, $height) {
   aspect-ratio: $width #{'/'} $height;
   // Fallback (current, using padding hack)
-  @supports not (aspect-ratio: $width #{'/'} $height) {
-    &::before {
-      float: left;
-      padding-top: calc(100% * #{$height} / #{$width});
-      content: "";
-    }
-    &::after {
-      display: block;
-      content: "";
-      clear: both;
-    }
+  @supports (aspect-ratio: $width #{'/'} $height) {
+    $ratio: $height/$width * 100%;
+    width: 100%;
+    height: auto;
   }
 }
