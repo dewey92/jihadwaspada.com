@@ -38,8 +38,12 @@ const otherPosts = filterPostsByCategory('other', posts)
 
 <style lang="scss">
 main {
-	max-width: 1200px;
+	max-width: var(--container-width);
 	width: 100%;
 	padding-inline: 20px;
+
+	@media (min-width: 1240px) {
+		padding-inline: 0;
+	}
 }
 </style>

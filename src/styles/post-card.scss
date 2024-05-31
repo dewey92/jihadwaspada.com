@@ -43,9 +43,13 @@
 }
 
 .post-card__meta {
-  font: 300 14px / 1.8 var(--font-2);
+  font: 400 13px / 1.8 var(--font-2);
   color: #777;
   margin-top: 5px;
+
+  @include tablet {
+    font-size: 14px;
+  }
 }
 
 .post-card__summary {

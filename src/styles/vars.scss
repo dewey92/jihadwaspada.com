@@ -1,6 +1,7 @@
 $blue: #03a9f4;
 $blue-light: #e5f6fd;
 $blue-dark: #014361;
+$blue-dark-2: #191645;
 $blue-text: #007dd1;
 
 $orange: #ff9800;
@@ -43,10 +44,7 @@ $desktop: 1200px;
 
 @mixin aspect-ratio($width, $height) {
   aspect-ratio: $width #{'/'} $height;
-  // Fallback (current, using padding hack)
-  @supports (aspect-ratio: $width #{'/'} $height) {
-    $ratio: $height/$width * 100%;
-    width: 100%;
-    height: auto;
-  }
+  // these two are needed for safari
+  width: 100%;
+  height: auto;
 }
