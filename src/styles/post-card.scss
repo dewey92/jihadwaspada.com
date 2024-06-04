@@ -32,6 +32,7 @@
   display: block;
   font: 600 18px / 1.5 var(--font-2);
   margin-bottom: 0;
+  letter-spacing: -0.2px;
 
   .post-card:hover & {
     color: #000;
@@ -39,6 +40,7 @@
 
   @include tablet {
     font-size: 23px;
+    letter-spacing: -0.4px;
   }
 }
 
@@ -63,5 +65,6 @@
   @include tablet {
     font-size: 17px;
     -webkit-line-clamp: 3;
+    line-height: 1.6;
   }
 }

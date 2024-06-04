@@ -61,6 +61,7 @@ section {
 }
 
 h2 {
+	font-family: var(--font-2);
 	font-size: 20px;
 	text-transform: uppercase;
 	letter-spacing: 2px;
@@ -131,7 +132,6 @@ h2 {
 .post-card__summary {
 	display: block; // reset ellipsis
 	font-size: 16px;
-	line-height: 1.6;
 	margin-bottom: 15px;
 
 	@include tablet {
@@ -183,6 +183,10 @@ h2 {
 
 	@include tablet {
 		grid-template-columns: 128px 1fr;
+	}
+
+	.post-card__title {
+		letter-spacing: 0;
 	}
 }
 </style>

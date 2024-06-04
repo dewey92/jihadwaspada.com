@@ -82,7 +82,7 @@
   }
 
   &.currentlyReading {
-    background: $blue-dark;
+    background: $blue-9;
     &::before {
       content: '\f101';
       font-family: var(--font-awesome);

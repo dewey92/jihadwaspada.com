@@ -1,18 +1,45 @@
-$blue: #03a9f4;
-$blue-light: #e5f6fd;
-$blue-dark: #014361;
-$blue-dark-2: #191645;
-$blue-text: #007dd1;
+$grey: #F4F9FF;
+$grey-dark: #7892BC;
 
-$orange: #ff9800;
-$orange-light: #fff4e5;
-$orange-dark: #663c00;
+// Shades
+$blue-1: hsl(203, 85%, 95%);
+$blue-2: hsl(204, 85%, 85%);
+$blue-3: hsl(204, 85%, 75%);
+$blue-4: hsl(204, 85%, 65%);
+$blue-5: hsl(204, 85%, 55%);
+$blue-base: hsl(204, 85%, 50%);
+$blue-6: hsl(204, 85%, 45%);
+$blue-7: hsl(204, 85%, 35%);
+$blue-8: hsl(204, 85%, 25%);
+$blue-9: hsl(204, 85%, 15%);
+$blue-10: hsl(205, 85%, 5%);
 
-$green: #4caf50;
-$green-light: #edf7ed;
-$green-dark: #1e4620;
+$orange-1: hsl(25, 85%, 95%);
+$orange-2: hsl(24, 85%, 85%);
+$orange-3: hsl(24, 85%, 75%);
+$orange-4: hsl(24, 85%, 65%);
+$orange-5: hsl(24, 85%, 55%);
+$orange-base: hsl(24, 85%, 50%);
+$orange-6: hsl(24, 85%, 45%);
+$orange-7: hsl(24, 85%, 35%);
+$orange-8: hsl(24, 85%, 25%);
+$orange-9: hsl(24, 85%, 15%);
+$orange-10: hsl(23, 85%, 5%);
 
-$yellow: #fef5e7;
+$green-1: hsl(113, 85%, 95%);
+$green-2: hsl(114, 85%, 85%);
+$green-3: hsl(114, 85%, 75%);
+$green-4: hsl(114, 85%, 65%);
+$green-5: hsl(114, 85%, 55%);
+$green-base: hsl(114, 85%, 50%);
+$green-6: hsl(114, 85%, 45%);
+$green-7: hsl(114, 85%, 35%);
+$green-8: hsl(114, 85%, 25%);
+$green-9: hsl(114, 85%, 15%);
+$green-10: hsl(113, 85%, 5%);
+
+// Aliases
+$blue-text: $blue-6;
 
 $tablet: 768px;
 $laptop: 1024px;

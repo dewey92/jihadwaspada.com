@@ -10,11 +10,34 @@
 <style lang="scss" is:global>
 @import '@styles/vars.scss';
 .verse {
-	background: #f9f9f9;
+	background: #fbfbfb;
+	border: 1px solid #eee;
 	border-radius: 8px;
 	margin-bottom: 30px;
 	padding: 15px;
-	box-shadow: #aaa 0 8px 16px -12px;
+	padding-top: 25px;
+	position: relative;
+	box-sizing: border-box;
+
+	&::before {
+		position: absolute;
+		top: -18px;
+		left: 20px;
+		content: '\f687';
+		font-family: var(--font-awesome);
+		font-weight: 900;
+		font-size: 16px;
+		background: white;
+		padding-inline: 10px;
+		border-radius: 8px;
+		border: 1px solid #eee;
+
+		@include tablet {
+			top: -20px;
+			left: 20px;
+			font-size: 20px;
+		}
+	}
 
 	@include tablet {
 		padding: 30px;

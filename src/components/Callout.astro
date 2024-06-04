@@ -4,9 +4,14 @@ interface Props {
 }
 
 const { type } = Astro.props
+const icon = {
+	info: 'fa-note-sticky',
+	success: 'fa-check-double',
+	warning: 'fa-triangle-exclamation',
+}[type]
 ---
 <aside class={`callout callout--${type}`}>
-	<i class="callout__icon fa-solid fa-note-sticky" />
+	<i class:list={['callout__icon', 'fa-solid', icon]} />
 	<div class="callout__body">
 		<slot />
 	</div>
@@ -17,33 +22,30 @@ const { type } = Astro.props
 
 	.callout {
 		display: flex;
-		border-radius: 8px;
-		border-left-width: 3px;
-		border-left-style: solid;
+		border-radius: 10px;
 		padding: 20px 25px;
 
 		background-color: var(--callout-color-light);
 		color: var(--callout-color-dark);
-		border-left-color: var(--callout-color);
 
 		@include mobile {
 			padding: 15px;
 		}
 
 		&--info {
-			--callout-color: #{$blue};
-			--callout-color-light: #{$blue-light};
-			--callout-color-dark: #{$blue-dark};
+			--callout-color: #{$blue-4};
+			--callout-color-light: #{$blue-1};
+			--callout-color-dark: #{$blue-6};
 		}
 		&--warning {
-			--callout-color: #{$orange};
-			--callout-color-light: #{$orange-light};
-			--callout-color-dark: #{$orange-dark};
+			--callout-color: #{$orange-4};
+			--callout-color-light: #{$orange-1};
+			--callout-color-dark: #{$orange-7};
 		}
 		&--success {
-			--callout-color: #{$green};
-			--callout-color-light: #{$green-light};
-			--callout-color-dark: #{$green-dark};
+			--callout-color: #{$green-7};
+			--callout-color-light: #{$green-1};
+			--callout-color-dark: #{$green-9};
 		}
 	}
 
@@ -66,6 +68,11 @@ const { type } = Astro.props
 
 		li::marker {
 			all: unset !important;
+		}
+
+		code {
+			background: none;
+			font-size: 12px;
 		}
 	}
 </style>
