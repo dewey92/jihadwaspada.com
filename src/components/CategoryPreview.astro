@@ -146,10 +146,11 @@ h2 {
 	@include tablet {
 		grid-auto-flow: column;
 		grid-template-columns: 1fr 1fr;
+		grid-gap: 40px;
 	}
 
 	.post-card__image {
-		border-radius: 10px;
+		border-radius: 15px;
 	}
 
 	.post-card__title {
@@ -183,6 +184,10 @@ h2 {
 
 	@include tablet {
 		grid-template-columns: 128px 1fr;
+	}
+
+	.post-card__image {
+		border-radius: 10px;
 	}
 
 	.post-card__title {
