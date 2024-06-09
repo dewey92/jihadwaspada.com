@@ -6,7 +6,16 @@ import avatar from '@assets/images/avatar.png'
 <header>
 	<div>
 		<h1>Hi, I'm <dfn title="/dʒɪˈhɑːd/ (noun): An individual's striving for spiritual self-perfection">Jihad</dfn>.</h1>
-		<h2>A father, an ordinary software developer, and a muslim before all</h2>
+		<h2>A father, a software developer, and a muslim before all</h2>
+
+		<div class="tags">
+			<span>Typescript</span>
+			<span>React</span>
+			<span>Redux</span>
+			<span>Node.js</span>
+			<span>PHP</span>
+			<span>SCSS</span>
+		</div>
 	</div>
 
 	<figure>
@@ -74,10 +83,31 @@ dfn {
 	}
 }
 
+.tags {
+	display: flex;
+	justify-content: center;
+	flex-wrap: wrap;
+	gap: 10px;
+	margin-top: 30px;
+
+	@include tablet {
+		justify-content: left;
+	}
+
+	span {
+		display: inline-block;
+		padding: 6px 10px 4px;
+		border-radius: 99em;
+		border: 1px solid #ccc;
+		font-size: 14px;
+		line-height: 1;
+	}
+}
+
 img {
 	display: block;
 	border-radius: 100%;
-	margin: 20px auto 0;
+	margin: 40px auto 0;
 	width: 200px;
 	height: auto;
 	box-shadow: #f3f3f3 0 0 0 15px;
