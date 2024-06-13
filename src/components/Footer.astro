@@ -21,33 +21,28 @@ const today = new Date();
 <style lang="scss">
 @import '@styles/vars.scss';
 footer {
-	padding: 2em 1em 3em 1em;
+	padding: var(--space-l) var(--space-m) var(--space-xl) var(--space-m);
 	background: linear-gradient(var(--gray-gradient)) no-repeat;
 	color: rgb(var(--gray));
 	text-align: center;
-	font-size: 13px;
-
-	@include tablet {
-		font-size: 16px;
-	}
 }
 footer > div {
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
-	gap: 20px;
+	gap: var(--space-m);
 	max-width: var(--container-width);
 	margin: auto;
 }
 .social-links {
 	display: flex;
 	justify-content: center;
-	gap: 10px;
+	gap: var(--space-s);
 }
 .social-links a {
 	text-decoration: none;
 	color: rgb(var(--gray));
-	font-size: 20px;
+	font-size: var(--fs-4);
 }
 .social-links a:hover {
 	color: rgb(var(--gray-dark));

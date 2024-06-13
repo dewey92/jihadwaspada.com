@@ -1,6 +1,8 @@
 @import '@styles/vars.scss';
 
 :root {
+  font-size: 16px;
+
   --black: 15, 18, 25;
   --gray: 96, 115, 159;
   --gray-light: 229, 233, 240;
@@ -15,19 +17,21 @@
   --font-mono: "JetBrains Mono", monospace;
   --font-awesome: "Font Awesome 6 Free";
 
-  --details-spacing: 20px;
+  --details-spacing: var(--space-l);
   --container-width: 720px;
+
+  @include spacing-variables;
+  @include font-variables;
 }
+
 body {
   font-family: var(--font-1);
   margin: 0;
   padding: 0;
   text-align: left;
-  background-size: 100% 600px;
   word-wrap: break-word;
   overflow-wrap: break-word;
   color: #333;
-  font-size: 16px;
   line-height: 1.7;
   overflow-x: hidden;
 }
@@ -35,10 +39,10 @@ main {
   box-sizing: border-box;
   width: var(--container-width);
   margin: auto;
-  padding-block: 48px;
+  padding-block: var(--space-xl);
 
   @include mobile {
-    padding: 20px;
+    padding: var(--space-m);
     width: 100%;
   }
 }
@@ -48,24 +52,25 @@ h3,
 h4,
 h5,
 h6 {
-  margin: 0 0 0.5rem 0;
+  margin: 0; // reset
   color: rgb(var(--black));
   line-height: 1.2;
 }
 h1 {
-  font-size: 3.052em;
+  font-size: var(--fs-6);
+  letter-spacing: -0.04em;
 }
 h2 {
-  font-size: 2.441em;
+  font-size: var(--fs-5);
+  letter-spacing: -0.035em;
 }
 h3 {
-  font-size: 1.953em;
+  font-size: var(--fs-4);
+  letter-spacing: -0.03em;
 }
 h4 {
-  font-size: 1.563em;
-}
-h5 {
-  font-size: 1.25em;
+  font-size: var(--fs-3);
+  letter-spacing: -0.02em;
 }
 strong,
 b {
@@ -73,16 +78,10 @@ b {
 }
 a {
   color: $blue-text;
+  text-underline-offset: var(--space-xxs);
 }
 p {
   margin-bottom: 1em;
-}
-textarea {
-  width: 100%;
-  font-size: 16px;
-}
-input {
-  font-size: 16px;
 }
 table {
   width: 100%;
@@ -90,15 +89,15 @@ table {
 img {
   max-width: 100%;
   height: auto;
-  border-radius: 6px;
+  border-radius: 1em;
 }
 code {
   background: #ededed;
   color: #555;
-  font-size: 14px;
-  padding: 0 4px;
+  font-size: calc(var(--fs-2) * 0.9);
+  padding: 0 var(--space-xs);
   border: none;
-  border-radius: 8px;
+  border-radius: 0.5em;
   overflow: auto;
   font-family: var(--font-mono);
   display: inline-block;

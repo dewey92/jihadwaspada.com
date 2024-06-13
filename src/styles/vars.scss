@@ -1,3 +1,5 @@
+@use 'sass:math';
+
 $grey: #F4F9FF;
 $grey-dark: #7892BC;
 
@@ -74,4 +76,47 @@ $desktop: 1200px;
   // these two are needed for safari
   width: 100%;
   height: auto;
+}
+
+@mixin font-awesome {
+  font-family: "Font Awesome 6 Free";
+  font-weight: 900;
+}
+
+@function proportion ($n) {
+  //
+}
+
+@mixin spacing-variables {
+  $golden-ratio: 1.618;
+
+  --space-half-ratio: #{math.sqrt($golden-ratio)};
+  --space-xxs: #{1em / (math.pow($golden-ratio, 3))};
+  --space-xs: #{1em / (math.pow($golden-ratio, 2))};
+  --space-s: #{1em / $golden-ratio};
+  --space-m: 1em; // base
+  --space-l: #{1em * $golden-ratio};
+  --space-xl: #{1em * math.pow($golden-ratio, 2)};
+  --space-xxl: #{1em * math.pow($golden-ratio, 3)};
+}
+
+@mixin font-variables {
+  $font-scale: 1.2;
+
+  --fs-half-ratio: #{math.sqrt($font-scale)};
+  --fs-1: #{1em / math.pow($font-scale, 2)};
+  --fs-2: #{1em / $font-scale};
+  --fs-3: 1em;
+  --fs-4: #{1em * $font-scale};
+  --fs-5: #{1em * math.pow($font-scale, 2)};
+  --fs-6: #{1em * math.pow($font-scale, 3)};
+  --fs-7: #{1em * math.pow($font-scale, 4)};
+  --fs-8: #{1em * math.pow($font-scale, 5)};
+  --fs-9: #{1em * math.pow($font-scale, 6)};
+
+  font-size: 16px;
+
+  @include tablet {
+    font-size: 18px;
+  }
 }

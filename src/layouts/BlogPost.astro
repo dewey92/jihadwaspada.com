@@ -82,38 +82,31 @@ article {
 	color: rgb(var(--gray-dark));
 }
 .title {
-	margin-bottom: 1em;
-	padding: 1em 0;
+	margin-bottom: var(--space-l);
 	text-align: center;
 	line-height: 1;
 }
 .title h1 {
-	font-size: 28px;
-	margin-bottom: 10px;
-	letter-spacing: -0.7px;
+	font-size: var(--fs-6);
+	margin-bottom: var(--space-xxs);
 
 	@include tablet {
-		font-size: 50px;
-		letter-spacing: -1px;
+		font-size: var(--fs-8);
 	}
 }
 .date {
-	font-size: 15px;
+	font-size: var(--fs-2);
 	color: rgb(var(--gray));
-
-	@include tablet {
-		font-size: 16px;
-	}
 }
 .last-updated-on {
 	font-style: italic;
 }
 .hero-image {
 	position: relative;
-	margin-bottom: 30px;
+	margin-bottom: var(--space-l);
 
 	@include mobile {
-		margin-inline: -18px;
+		margin-inline: -0.8em;
 	}
 	@include tablet {
 		left: 50%;
@@ -129,18 +122,18 @@ article {
 
 		@include tablet {
 			left: -50%;
-			max-width: min(100vw, calc($tablet + 50px));
+			max-width: min(100vw, calc($tablet + 3em));
 		}
 	}
 
 	img {
 		display: block;
-		border-radius: 12px;
+		border-radius: 0.8em;
 		// box-shadow: var(--box-shadow);
 	}
 
 	figcaption {
-		margin-top: 10px;
+		margin-top: var(--space-s);
 		font-size: 80%;
 		color: #5a5a5a;
 		text-align: center;
@@ -153,53 +146,51 @@ article {
 
 .post__content {
 	color: #333;
-	font-size: 16px;
 	line-height: 2;
 
 	@include tablet {
-		font-size: 19px;
 		line-height: 1.8;
 	}
 
 	h2, h3, h4 {
 		font-family: var(--font-2);
 		color: #222;
-		margin-bottom: 15px;
+		margin-bottom: var(--space-xs);
+		letter-spacing: -0.025em;
 
 		+ p {
 			margin-top: 0;
 		}
 	}
 
-	h2 {
-		margin-top: 30px;
-		font-weight: 600;
-		font-size: 28px;
-		letter-spacing: -0.7px;
+	p, li {
+		font-size: calc(var(--fs-3) * var(--fs-half-ratio));
+	}
 
-		@include tablet {
-			font-size: 32px;
-		}
+	h2 {
+		margin-top: var(--space-m);
+		font-weight: 600;
+		font-size: var(--fs-6);
 	}
 	h3 {
 		font-weight: 500;
-		font-size: 26px;
+		font-size: var(--fs-5);
 	}
 	h4 {
-		font-weight: 400;
-		font-size: 24px;
+		font-weight: 500;
+		font-size: var(--fs-4);
 	}
 
 	p, .expressive-code {
-		margin-block: 30px;
+		margin-block: var(--space-l);
 	}
 
 	p + ul, p + ol {
-		margin-top: -20px;
+		margin-top: calc(var(--space-m) * -1);
 	}
 
 	ul, ol {
-		padding-left: 30px;
+		padding-left: var(--space-l);
 	}
 	ul > li::marker {
 		content: '\f0da\0020\0020\0020';
@@ -218,41 +209,32 @@ article {
 	blockquote {
 		all: unset;
 		display: block;
-		padding: 15px;
+		padding: var(--space-m);
+		font-family: var(--font-2);
 		font-style: italic;
-		margin-bottom: 30px;
-
-		@include tablet {
-			padding: 25px;
-		}
+		margin-bottom: var(--space-l);
 
 		> p {
-			font-size: 16px;
+			font-size: var(--fs-3);
 			margin-bottom: 0;
-
-			@include tablet {
-				font-size: 18px;
-			}
 		}
 
 		&:before {
+			@include font-awesome;
 			content: '\f10d';
 			display: block;
-			margin-bottom: 20px;
-			font-family: var(--font-awesome);
-			font-size: 30px;
-			font-weight: 900;
+			margin-bottom: var(--space-m);
+			font-size: var(--fs-6);
 			color: $blue-text;
 			line-height: 1;
 		}
 
 		&:after {
+			@include font-awesome;
 			content: '\f10e';
 			display: block;
-			margin-top: 10px;
-			font-family: var(--font-awesome);
-			font-size: 30px;
-			font-weight: 900;
+			margin-top: var(--space-m);
+			font-size: var(--fs-6);
 			color: $blue-text;
 			text-align: right;
 			line-height: 1;
@@ -265,8 +247,8 @@ article {
 	}
 
 	th, td {
-		font-size: 16px;
-		padding: 5px;
+		font-size: 1rem;
+		padding: var(--space-xs);
 	}
 
 	pre {
@@ -281,10 +263,10 @@ article {
 		margin-bottom: var(--details-spacing);
 		background: $orange-1;
 		font-size: 90%;
-		border-radius: 8px;
+		border-radius: 0.6em;
 
 		p, .expressive-code {
-			margin-block: 15px;
+			margin-block: var(--space-m);
 		}
 
 		summary {
@@ -306,7 +288,7 @@ article {
 
 	[data-footnotes] {
 		font-size: 90%;
-		padding-top: 20px;
+		padding-top: var(--space-l);
 		border-top: 2px solid #eee;
 
 		p {
@@ -316,10 +298,10 @@ article {
 }
 
 lite-youtube {
-	border-radius: 15px;
+	border-radius: 1em;
 
 	& + & {
-		margin-top: 15px;
+		margin-top: var(--space-m);
 	}
 }
 </style>

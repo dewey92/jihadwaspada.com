@@ -1,25 +1,22 @@
 @import '@styles/vars.scss';
 
 .post-card {
-  font: normal 16px / 1.7em var(--font-1);
+  font: normal 1em / 1.7 var(--font-1);
   color: #555;
-  margin-top: 2px;
   text-decoration: none;
   display: grid;
-  gap: 10px;
 
   @include tablet {
-    font-size: 18px;
-    gap: 20px;
+    gap: var(--space-l);
     grid-auto-flow: row;
     grid-template-columns: 1fr 4fr;
   }
 }
 
 .post-card__image {
-  // display: none;
   object-fit: cover;
   @include aspect-ratio(16, 9);
+  border-radius: 0.75em;
 
   @include tablet {
     display: block;
@@ -30,32 +27,27 @@
 .post-card__title {
   color: #333;
   display: block;
-  font: 600 18px / 1.5 var(--font-2);
-  margin-bottom: 0;
-  letter-spacing: -0.2px;
+  font: 600 var(--fs-4) / 1.5 var(--font-2);
+  margin-block: var(--space-xxs);
+  letter-spacing: -0.01em;
 
   .post-card:hover & {
     color: #000;
   }
 
   @include tablet {
-    font-size: 23px;
-    letter-spacing: -0.4px;
+    margin-top: 0;
   }
 }
 
 .post-card__meta {
-  font: 400 13px / 1.8 var(--font-2);
+  font: 400 var(--fs-2) / 1.8 var(--font-2);
   color: #777;
-  margin-top: 5px;
-
-  @include tablet {
-    font-size: 14px;
-  }
 }
 
 .post-card__summary {
-  margin-top: 10px;
+  margin-top: var(--space-s);
+  margin-bottom: 0;
   overflow-y: hidden;
   word-break: break-word;
   display: -webkit-box;
@@ -63,7 +55,6 @@
   -webkit-box-orient: vertical;
 
   @include tablet {
-    font-size: 17px;
     -webkit-line-clamp: 3;
     line-height: 1.6;
   }

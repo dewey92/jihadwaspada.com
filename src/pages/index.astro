@@ -5,6 +5,7 @@ import Header from '@components/Header.astro';
 import Footer from '@components/Footer.astro';
 import CategoryPreview from '@components/CategoryPreview.astro';
 import Introduction from '@components/Introduction.astro';
+import WorkingExperience from '@components/WorkingExperience.astro';
 import { filterPostsByCategory } from '@utils/posts';
 import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 
@@ -27,6 +28,7 @@ const otherPosts = filterPostsByCategory('other', posts)
 		<Header />
 		<main>
 			<Introduction />
+			<!-- <WorkingExperience /> -->
 			<CategoryPreview category="latest" posts={posts} />
 			<CategoryPreview category="programming" posts={programmingPosts} />
 			<CategoryPreview category="islam" posts={islamicPosts} />
@@ -40,7 +42,7 @@ const otherPosts = filterPostsByCategory('other', posts)
 main {
 	max-width: var(--container-width);
 	width: 100%;
-	padding-inline: 20px;
+	padding-inline: var(--space-m);
 
 	@media (min-width: 1240px) {
 		padding-inline: 0;

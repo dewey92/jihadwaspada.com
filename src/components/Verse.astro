@@ -12,35 +12,29 @@
 .verse {
 	background: #fbfbfb;
 	border: 1px solid #eee;
-	border-radius: 8px;
-	margin-bottom: 30px;
-	padding: 15px;
-	padding-top: 25px;
+	border-radius: 0.75em;
+	margin-bottom: var(--space-l);
+	padding: var(--space-m);
+	padding-top: var(--space-l);
 	position: relative;
 	box-sizing: border-box;
 
 	&::before {
 		position: absolute;
 		top: -18px;
-		left: 20px;
+		left: var(--space-l);
 		content: '\f687';
 		font-family: var(--font-awesome);
 		font-weight: 900;
-		font-size: 16px;
+		font-size: 1rem;
 		background: white;
-		padding-inline: 10px;
-		border-radius: 8px;
+		padding-inline: var(--space-s);
+		border-radius: 0.5em;
 		border: 1px solid #eee;
-
-		@include tablet {
-			top: -20px;
-			left: 20px;
-			font-size: 20px;
-		}
 	}
 
 	@include tablet {
-		padding: 30px;
+		padding: var(--space-l);
 	}
 }
 
@@ -49,21 +43,18 @@
 	text-align: right;
 
 	p {
-		font-size: 18px;
+		font-size: var(--fs-4);
 		margin-block-start: 0;
-
-		@include tablet {
-			font-size: 22px;
-		}
 	}
 }
 
 .verse__translation > p {
-	font-size: 15px;
+	font-family: var(--font-2);
+	font-size: calc(var(--fs-2) * var(--fs-half-ratio));
 	margin-top: 0;
 
-	@include tablet {
-		font-size: 16px;
+	@include mobile {
+		line-height: 1.8;
 	}
 
 	&:last-of-type {

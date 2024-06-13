@@ -22,15 +22,12 @@ const icon = {
 
 	.callout {
 		display: flex;
-		border-radius: 10px;
-		padding: 20px 25px;
+		border-radius: 0.75em;
+		padding: var(--space-m);
+		font-family: var(--font-2);
 
 		background-color: var(--callout-color-light);
 		color: var(--callout-color-dark);
-
-		@include mobile {
-			padding: 15px;
-		}
 
 		&--info {
 			--callout-color: #{$blue-4};
@@ -50,16 +47,21 @@ const icon = {
 	}
 
 	.callout__icon {
-		margin-top: 4px;
-		margin-right: 15px;
+		margin-top: var(--space-xxs);
+		margin-left: var(--space-xxs);
+		margin-right: 1em;
 		color: var(--callout-color);
 	}
 
 	.callout__body {
 		p, ul, ol {
 			margin-top: 0;
-			font-size: 15px;
+			font-size: 1em;
 			line-height: 1.8;
+
+			&:first-child {
+				margin-top: -0.1em;
+			}
 
 			&:last-child {
 				margin-bottom: 0;
@@ -72,7 +74,7 @@ const icon = {
 
 		code {
 			background: none;
-			font-size: 12px;
+			font-size: var(--fs-2);
 		}
 	}
 </style>

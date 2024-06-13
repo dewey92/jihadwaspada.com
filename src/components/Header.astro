@@ -20,7 +20,7 @@ import { SITE_TITLE } from '../consts';
 
 header {
 	margin: 0;
-	padding: 20px 1em 0;
+	padding: var(--space-l) var(--space-m) 0;
 	background: white;
 }
 
@@ -33,18 +33,17 @@ nav {
 	margin: auto;
 }
 nav a {
-	padding: 10px;
+	padding-inline: var(--space-s);
 	color: #333;
-	border-bottom: 3px solid transparent;
 	text-decoration: none;
 }
 nav a.active {
 	text-decoration: none;
-	border-bottom-color: $blue-text;
+	border-bottom: 3px solid $blue-text;
 }
 h2 {
 	margin: 0;
-	font-size: 1em;
+	font-size: var(--font-3);
 
 	a {
 		padding-left: 0;

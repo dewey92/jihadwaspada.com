@@ -26,7 +26,7 @@ export default defineConfig({
 			styleOverrides: {
 				codeFontFamily: '"JetBrains Mono", monospace',
 				codeFontSize: '1em',
-				borderRadius: '8px',
+				borderRadius: '0.75em',
 				frames: {
 					frameBoxShadowCssValue: '0 20px 18px -16px #e3e3e3'
 				}
