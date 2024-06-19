@@ -1,0 +1,119 @@
+@import '@styles/vars.scss';
+
+.container {
+  border: 1px solid #ccc;
+  border-radius: 1em;
+  overflow: hidden;
+  display: grid;
+  grid-auto-flow: row;
+  gap: var(--space-m);
+  margin-block: var(--space-m); // not l, intentional
+  // height: 365px;
+
+  > :first-child {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background: var(--ec-frm-edBg);
+    overflow: auto;
+
+    :global(.expressive-code) {
+      margin-block: 0;
+
+      :global(.frame) {
+        box-shadow: none;
+      }
+      :global(pre) {
+        border: none;
+      }
+    }
+
+    code {
+      font-size: 13px;
+    }
+  }
+
+  > :last-child {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: var(--space-s);
+
+    .control {
+      font-size: 15px;
+    }
+
+    label {
+      display: flex;
+      align-items: center;
+      gap: var(--space-xs);
+    }
+
+    input {
+      margin-block: 0;
+    }
+
+    span.textUnderline {
+      display: inline-block;
+      margin-top: 15px;
+      text-underline-offset: 0.3em;
+      text-decoration: 2px underline currentColor;
+
+      &.px {
+        text-underline-offset: 6px;
+      }
+    }
+
+    span.letterSpacing {
+      display: inline-block;
+      margin-top: 15px;
+      letter-spacing: -0.05em;
+
+      &.px {
+        letter-spacing: -1px;
+      }
+    }
+
+    span.verticalMargin {
+      p {
+        margin-top: 0;
+        margin-bottom: 2em;
+      }
+      p:first-child {
+        margin-top: 15px;
+      }
+
+      &.px {
+        p {
+          margin-bottom: 40px;
+        }
+      }
+    }
+  }
+}
+
+.callout {
+  padding: 0.8em;
+  border-radius: 0.75em;
+  border: 1px solid #ccc;
+  border-left: 0.25em solid $orange-3;
+  color: #555;
+
+  & ~ & {
+    margin-top: 10px;
+  }
+}
+
+.cascading {
+  font-size: 25px;
+  margin: 0;
+
+  li {
+    font-size: 0.7em;
+
+    &::marker {
+      all: unset !important;
+    }
+  }
+}

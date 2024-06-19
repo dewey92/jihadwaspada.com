@@ -1,0 +1,191 @@
+---
+title: Membuat Elemen Web yang Lebih Fleksibel dan Proporsional dengan `em`
+pubDate: 2024-06-19
+description: Selama ini pixel (px) mungkin menjadi sahabat setiamu dalam mengatur ukuran elemen web. Namun, tau gak ada unit lain yang lebih fleksibel yang dapat memudahkanmu mengembangkan component dengan lebih cepat, yaitu em?
+image: "@assets/images/wooden-ruler.jpg"
+categories: ["css"]
+---
+import Callout from '@components/Callout.astro'
+import { EmTextFontDemo, EmSpacingDemo, EmCascadingDemo } from '@components/content/EmDemo'
+
+Buat kamu-kamu para desainer dan frontend developer, mengatur ukuran elemen web adalah makanan sehari-hari. Selama ini kita mungkin terbiasa menggunakan pixel (`px`) untuk menentukan ukuran font, padding, maupun margin. Namun, tau gak kalau ada unit lain yang lebih fleksibel untuk mengatur hal-hal yang berkaitan dengan ukuran font, yaitu `em`?
+
+**px** adalah suatu unit pengukuran yang absolut. Karena sifatnya yang absolut, ia biasa digunakan untuk styling dengan ukuran yang tetap. Ukurannya tidak bergantung pada sesuatu yang lain seperti lebar _browser window_ atau ukuran font.
+
+Di sisi lain, **em** adalah suatu unit pengukuran yang relatif. Besarnya relatif terhadap ukuran font yang di-set pada elemen tersebut.
+
+```html
+<body style="font-size: 16px">
+  <p style="font-size: 1em">Some text</p>
+  <span style="font-size: 20px; padding-top: 2em">Smol text</span>
+</body>
+```
+
+Besar `1em` pada elemen `p` di atas adalah `16px` karena induknya (elemen `body`) memiliki ukuran font `16px`. Sedangkan besar `1em` pada elemen `span` adalah `20px` sehingga `padding-top`-nya sebesar `40px` (2 * 20px).
+
+## Penggunaan em
+### Dekorasi font
+Karena `em` bergantung pada ukuran font, satuan ini sangat cocok digunakan untuk segala hal yang berkaitan dengan ukuran font itu sendiri seperti `text-underline-offset` dan `letter-spacing`, yang mana bila ukuran font semakin besar, nilainya juga akan membesar, dan bila ukuran font semakin kecil, nilainya juga akan mengecil.
+
+Untuk lebih jelasnya, kami sediakan _interactive demo_ di bawah untuk memperlihatkan bagaimana `em` menjaga proporsionalitas `text-underline-offset` sesuai dengan ukuran fontnya. Sedangkan `px` sama sekali tidak memedulikan itu, mau font besar atau kecil, nilai offset akan tetap sama.
+
+<Callout type="info" icon="fa-circle-info">
+  Di ukuran font 20px, 0.3em == 6px
+</Callout>
+
+<EmTextFontDemo mode="textUnderline" client:visible>
+  <span slot="codeEm">
+    ```css {2}
+    .text-underline-result {
+      text-underline-offset: 0.3em;
+      text-decoration: 2px underline currentColor;
+    }
+    ```
+  </span>
+  <span slot="codePx">
+    ```css {2}
+    .text-underline-result {
+      text-underline-offset: 6px;
+      text-decoration: 2px underline currentColor;
+    }
+    ```
+  </span>
+</EmTextFontDemo>
+
+Menurut penulis, gap `6px` antara underline dengan text-nya terlihat terlalu renggang di ukuran font terkecil dan sedikit terlalu rapat di ukuran font terbesar. Sedangkan dengan `em`, gap `0.3em` terlihat konsisten baik di ukuran font terkecil maupun terbesar. Proporsional.
+
+Kami juga sediakan _interactive demo_ untuk `letter-spacing`:
+
+<Callout type="info" icon="fa-circle-info">
+  Di ukuran font 20px, 0.05em == 1px
+</Callout>
+
+<EmTextFontDemo mode="letterSpacing" client:visible>
+  <span slot="codeEm">
+    ```css {2}
+    .letter-spacing-result {
+      letter-spacing: -0.05em;
+    }
+    ```
+  </span>
+  <span slot="codePx">
+    ```css {2}
+    .letter-spacing-result {
+      letter-spacing: -1px;
+    }
+    ```
+  </span>
+</EmTextFontDemo>
+
+Sama seperti contoh sebelumnya, penggunaan unit `em` pada `letter-spacing` menjaga konsistensi dan proporsionalitas di ukuran font kecil maupun besar.
+
+### Vertical margin
+Untuk text yang dibaca secara horizontal (seperti huruf latin ini), ada hal yang namanya _vertical margin_ yang biasanya berguna untuk meningkatkan _readability_ text, misal untuk membedakan satu paragraf dengan paragraf lainnya. `em` sangat cocok digunakan untuk hal ini karena besarnya _vertical margin_ musti proporsional dengan ukuran fontnya.
+
+<Callout type="info" icon="fa-circle-info">
+  Di ukuran font 20px, 2em == 40px
+</Callout>
+
+<EmTextFontDemo mode="verticalMargin" client:visible>
+  <span slot="codeEm">
+    ```css {2}
+    p {
+      margin-bottom: 2em;
+    }
+    ```
+  </span>
+  <span slot="codePx">
+    ```css {2}
+    p {
+      margin-bottom: 40px;
+    }
+    ```
+  </span>
+</EmTextFontDemo>
+
+Terlihat bagaimana `margin-bottom: 40px` membuat jarak antar paragraf terlalu renggang di ukuran font `8px`. Namun tidak dengan `margin-bottom: 2em` yang tetap menjaga skalanya.
+
+### Spacing
+Tak terbatas pada font, ternyata penggunaan `em` juga ideal diterapkan untuk lebih mudah menentukan besar spacing (padding dan/atau margin) pada suatu component. Misal kita ingin membuat component callout dengan 3 ukuran berbeda: `sm`, `md`, dan `lg`. Tinggal set `font-size`, semua beres.
+
+<EmSpacingDemo client:visible>
+  <span slot="code">
+    ```scss {3}
+    .callout {
+      font-size: var(--callout-font-size);
+      padding: 0.8em;
+      border-radius: 0.75em;
+      border-left: 0.25em solid orange;
+
+      &--sm {
+        --callout-font-size: 12px;
+      }
+      &--md {
+        --callout-font-size: 16px;
+      }
+      &--lg {
+        --callout-font-size: 20px;
+      }
+    }
+    ```
+
+    ```html
+    <div class="callout callout--sm">...</div>
+    <div class="callout callout--md">...</div>
+    <div class="callout callout--lg">...</div>
+    ```
+  </span>
+</EmSpacingDemo>
+
+Lihat bagaimana kita hanya perlu menentukan `font-size` saja dan semua sudah beres dengan sendirinya, tak perlu pusing-pusing memikirkan nilai `padding` untuk masing-masing ukuran callout. Hemat waktu, hemat kode, proporsional terjaga.
+
+## Plus-minus em
+
+### + Mengurangi jumlah penyesuaian properti CSS
+Misal `px` dipilih untuk menuliskan component callout di atas yang memiliki 3 ukuran berbeda (`sm`, `md`, `lg`). Bila pada setiap ukuran callout ada 4 properti CSS yang harus kita tentukan (`font-size`, `padding`, `border-left`, dan `border-radius`), dan kita punya 3 buah breakpoint (`mobile`, `tablet`, `laptop`), artinya kita perlu menentukan setidaknya 3 x 4 x 3 = 36 properti CSS di component callout!
+
+Ini baru **satu** component lho ya!
+
+### + Responsive design
+Melihat bagaimana `em` relatif terhadap ukuran font, lebih mudah rasanya untuk mengembangkan elemen yang responsif. Cukup dengan mengubah `font-size` di media query dan semuanya bakal ngikut.
+
+```scss
+// mobile
+:root {
+  font-size: 16px;
+}
+
+// tablet
+@media (min-width: 768px) {
+  :root {
+    font-size: 18px;
+  }
+}
+```
+
+### - Cascading
+Hanya saja ada hal yang perlu diingat ketika menggunakan `em`: kita harus lebih berhati-hati terhadap sifat _cascading_-nya. Jika ukuran font di elemen induk berubah, semua elemen turunan yang menggunakan `em` juga akan berubah. Ini bisa menjadi tantangan tersendiri bila tidak dikelola dengan baik.
+
+Contoh yang paling sering ditemui adalah mengubah `font-size` pada  elemen yang berpotensi menjadi rekursif, seperti _nested `li`_. Bisa dilihat bagaimana semakin dalam `li` semakin kecil pula ukuran fontnya.
+
+<EmCascadingDemo client:visible>
+  <span slot="code">
+    ```css
+    li {
+      font-size: 0.7em;
+    }
+    ```
+  </span>
+</EmCascadingDemo>
+
+Bisa dibenerin pake `li li { font-size: 1em; }` tapi ya tetap diingat aja sifat _cascading_ ini.
+
+## Lalu px untuk apa?
+Meskipun `em` memiliki banyak keuntungan, ada beberapa situasi di mana `px` tetap lebih sesuai untuk digunakan, terutama untuk elemen yang _biasanya_ membutuhkan ukuran tetap, semisal `border-width` atau propoerti `width` dan `height` suatu image. Agak aneh kan kalau border jadi semakin tebal pas fontnya semakin besar juga. Yah walaupun ujung-ujungnya tergantung sama kebutuhan sih.
+
+## Penutup
+Secara umum, gunakan `em` jika kamu ingin memiliki styling yang besar kecilnya proporsional dengan ukuran font di elemen tersebut. Gunakan `px` untuk yang lainnnya, terutama untuk hal-hal yang butuh ukuran presisi.
+
+Yang terpenting, jangan terpaku pada peraturan! Kalau memang masuk akal pake `px` di suatu tempat, go for it. Berlaku juga sebaliknya.
+
+Kalo `rem` gimana mas? Mungkin lain kali kita bisa ngobrol soal `rem` 🙂

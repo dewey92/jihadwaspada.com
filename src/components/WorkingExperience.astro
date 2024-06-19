@@ -1,0 +1,95 @@
+---
+import { Image } from 'astro:assets'
+---
+
+<section>
+	<h2>Working Experience</h2>
+
+	<div class="we__company">
+		<img class="we__logo" src="#" alt="" />
+		<h3 class="we__role">Web developer at <strong>Chordify</strong>, <small>Utrecht</small></h3>
+		<time class="we__period">June 2020 - now</time>
+		<div class="we__stack">Tech stack: React, Redux, Typescript, PHP</div>
+	</div>
+	<div class="we__company">
+		<img class="we__logo" src="#" alt="" />
+		<h3 class="we__role">Frontend developer at <strong>Young Capital</strong>, <small>Hoofddorp</small></h3>
+		<time class="we__period">June 2019 - May 2020</time>
+		<div class="we__stack">Tech stack: React, Typescript, Ruby on Rails</div>
+	</div>
+	<div class="we__company">
+		<img class="we__logo" src="#" alt="" />
+		<h3 class="we__role">Frontend developer at <strong>Bloomon</strong>, <small>Amsterdam</small></h3>
+		<time class="we__period">September 2017 - May 2019</time>
+		<div class="we__stack">Tech stack: React, Redux, SCSS, Typescript</div>
+	</div>
+	<div class="we__company">
+		<img class="we__logo" src="#" alt="" />
+		<h3 class="we__role">Full-stack developer at <strong>Tech in Asia</strong>, <small>Jakarta</small></h3>
+		<time class="we__period">June 2016 - September 2017</time>
+		<div class="we__stack">Tech stack: React, Redux, SCSS, PHP, Wordpress, Laravel</div>
+	</div>
+	<div class="we__company">
+		<img class="we__logo" src="#" alt="" />
+		<h3 class="we__role">Freelancer, <small>Tangerang</small></h3>
+		<time class="we__period">Oktober 2015 - April 2016</time>
+		<div class="we__stack">Tech stack: Vue, PHP, Code Igniter</div>
+	</div>
+</section>
+
+<style lang="scss">
+section {
+	position: relative;
+	padding-block: 72px;
+	margin-bottom: 72px;
+
+	&::before {
+		content: '';
+		background: #f7f7f7;
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		width: 100vw;
+		box-sizing: border-box;
+		z-index: -1;
+		transform: translateX(-50%);
+		left: 50%;
+	}
+}
+
+h2 {
+	font-size: 32px;
+	letter-spacing: -1.3px;
+	margin-bottom: 30px;
+}
+
+.we__company {
+	display: grid;
+	grid-template-areas:
+		"we-logo we-role"
+		"we-logo we-period"
+		"we-logo we-stack";
+	grid-template-columns: 100px 1fr;
+	font-family: var(--font-2);
+
+	.we__logo {
+		grid-area: we-logo;
+	}
+	.we__role {
+		grid-area: we-role;
+		font-weight: normal;
+		font-size: 19px;
+	}
+	.we__period {
+		grid-area: we-period;
+		color: #777;
+	}
+	.we__stack {
+		grid-area: we-stack;
+	}
+
+	&:not(:first-of-type) {
+		margin-top: 30px;
+	}
+}
+</style>
