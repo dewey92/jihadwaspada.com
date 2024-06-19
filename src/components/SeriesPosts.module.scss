@@ -73,7 +73,7 @@
 
   &::before {
     content: counter(index-number);
-    font-size: 14px;
+    font-size: var(--fs-1);
     margin-left: 5px;
   }
 
@@ -95,11 +95,12 @@
 .articleImage {
   @include aspect-ratio(16, 9);
   object-fit: cover;
+  border-radius: 0.3em;
 }
 
 .articleTitle {
   color: white;
-  font-size: 15px;
+  font-size: var(--fs-2);
   font-weight: normal;
   margin: 0;
 }

@@ -1,10 +1,11 @@
 ---
 interface Props {
 	type: 'info' | 'success' | 'warning'
+	icon?: string
 }
 
-const { type } = Astro.props
-const icon = {
+const { type, icon: iconProp } = Astro.props
+const icon = iconProp ?? {
 	info: 'fa-note-sticky',
 	success: 'fa-check-double',
 	warning: 'fa-triangle-exclamation',
@@ -19,11 +20,15 @@ const icon = {
 
 <style lang="scss" is:global>
 	@import '@styles/vars.scss';
-
 	.callout {
+		--callout-line-height: 1.6;
+		--callout-font-size: 0.9em;
+
 		display: flex;
-		border-radius: 0.75em;
-		padding: var(--space-m);
+		padding: var(--callout-font-size);
+		padding-top: calc(var(--callout-font-size) / var(--callout-line-height));
+		padding-bottom: calc(var(--callout-font-size) - var(--space-xxs));
+		border-radius: calc(var(--callout-font-size) / var(--callout-line-height));
 		font-family: var(--font-2);
 
 		background-color: var(--callout-color-light);
@@ -47,21 +52,17 @@ const icon = {
 	}
 
 	.callout__icon {
-		margin-top: var(--space-xxs);
-		margin-left: var(--space-xxs);
-		margin-right: 1em;
+		font-size: var(--callout-font-size);
+		line-height: var(--callout-line-height);
+		margin-right: var(--space-s);
 		color: var(--callout-color);
 	}
 
 	.callout__body {
 		p, ul, ol {
 			margin-top: 0;
-			font-size: 1em;
-			line-height: 1.8;
-
-			&:first-child {
-				margin-top: -0.1em;
-			}
+			font-size: var(--callout-font-size);
+			line-height: var(--callout-line-height);
 
 			&:last-child {
 				margin-bottom: 0;
