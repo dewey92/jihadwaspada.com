@@ -57,11 +57,23 @@
     span.textUnderline {
       display: inline-block;
       margin-top: 15px;
-      text-underline-offset: 0.3em;
-      text-decoration: 2px underline currentColor;
+
+      @supports (text-decoration: 2px underline currentColor) {
+        text-underline-offset: 0.3em;
+        text-decoration: 2px underline currentColor;
+      }
+      @supports not (text-decoration: 2px underline currentColor) {
+        padding-bottom: 0.3em;
+        border-bottom: 2px solid currentColor;
+      }
 
       &.px {
-        text-underline-offset: 6px;
+        @supports (text-decoration: 2px underline currentColor) {
+          text-underline-offset: 6px;
+        }
+        @supports not (text-decoration: 2px underline currentColor) {
+          padding-bottom: 6px;
+        }
       }
     }
 
